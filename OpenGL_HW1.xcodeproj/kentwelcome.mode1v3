@@ -216,10 +216,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>13F2B0D413A9374600CFB4C7</string>
+						<string>13CD6D9313A93C5B0081325B</string>
 						<key>history</key>
 						<array>
-							<string>1328E14113A9302000F8F03D</string>
+							<string>13F2B0D413A9374600CFB4C7</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -370,14 +370,14 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>13F2B0D313A9374600CFB4C7</string>
+										<string>13CD6D9013A93C5B0081325B</string>
 										<key>history</key>
 										<array>
 											<string>1319A3721370F3800095B84D</string>
 											<string>1328E13013A92FDB00F8F03D</string>
 											<string>1328E13113A92FDB00F8F03D</string>
 											<string>13F2B0C713A9360000CFB4C7</string>
-											<string>13F2B0D213A9374600CFB4C7</string>
+											<string>13F2B0D313A9374600CFB4C7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -389,14 +389,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1072, 453}}</string>
+								<string>{{0, 0}, {1072, 447}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 115 1280 663 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>453pt</string>
+							<string>447pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -409,14 +409,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 458}, {1072, 164}}</string>
+								<string>{{0, 452}, {1072, 170}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 115 1280 663 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>164pt</string>
+							<string>170pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -435,9 +435,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>13F2B0C913A9360000CFB4C7</string>
+				<string>13CD6D9113A93C5B0081325B</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>13F2B0CA13A9360000CFB4C7</string>
+				<string>13CD6D9213A93C5B0081325B</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -575,13 +575,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>13F2B0DC13A9374600CFB4C7</string>
-		<string>13F2B0DD13A9374600CFB4C7</string>
+		<string>13CD6D9C13A93C5B0081325B</string>
+		<string>13CD6D9D13A93C5B0081325B</string>
+		<string>13CD6D9E13A93C5B0081325B</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>132D75E11344632D00CE6637</string>
 		<string>13AD91351378009E00024E32</string>
+		<string>/Users/kentwelcome/Programming/OpenGL/OpenGL_HW1/OpenGL_HW1.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
-		<string>/Users/kentwelcome/Programming/OpenGL/opengl-3d-model/OpenGL_HW1/OpenGL_HW1.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 115 1280 663 0 0 1280 778 </string>
@@ -661,7 +662,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>132D75E11344632D00CE6637</string>
-				<string>13F2B0CC13A9360000CFB4C7</string>
+				<string>13CD6D9413A93C5B0081325B</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -783,13 +784,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>13F2B0D513A9374600CFB4C7</string>
+				<string>13CD6D9513A93C5B0081325B</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>13F2B0D613A9374600CFB4C7</string>
-				<string>13F2B0D713A9374600CFB4C7</string>
-				<string>13F2B0D813A9374600CFB4C7</string>
-				<string>13F2B0D913A9374600CFB4C7</string>
-				<string>13F2B0DA13A9374600CFB4C7</string>
+				<string>13CD6D9613A93C5B0081325B</string>
+				<string>13CD6D9713A93C5B0081325B</string>
+				<string>13CD6D9813A93C5B0081325B</string>
+				<string>13CD6D9913A93C5B0081325B</string>
+				<string>13CD6D9A13A93C5B0081325B</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -945,7 +946,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>13F2B0DB13A9374600CFB4C7</string>
+				<string>13CD6D9B13A93C5B0081325B</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
