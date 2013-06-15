@@ -15,9 +15,9 @@ char models[11][16] = {
 	"toruses"};
 
 
-GLfloat light_ambient[] = { 0.5, 0.0, 0.2, 1.0 };
+GLfloat light_ambient[] = { 0.5, 0.0, 0.2, 1.0 };  /* abvient light. */
 GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };  /* diffuse light. */
-GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 }; /* specular light.*/
 GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 }; 
 GLfloat mat_shininess[] = { 50.0 };
 GLfloat lmodel_ambient[] = { 0.1, 0.1, 0.1, 1.0 };
@@ -55,57 +55,6 @@ void ChangeWindowsSize(int width , int height)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	
-}
-
-void RenderScene()
-{
-	int Triangle_index, Point;
-	int p;
-	//GLfloat Z_color;
-	GLfloat v1, v2, v3;
-	GLfloat N1, N2, N3;
-	//GLint p1;
-	
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
-	
-	//glEnableClientState(GL_VERTEX_ARRAY);
-	//glVertexPointer(3, GL_FLOAT, 3*sizeof(GLfloat), Vertex_Coordinates);
-	glEnable(GL_DEPTH_TEST);
-	glDepthMask(GL_TRUE);
-	
-	glPushMatrix();
-	glRotatef((GLfloat)Vr_x, 1, 0, 0);
-	glRotatef((GLfloat)Vr_y, 0, 1, 0);
-	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-	
-	
-	glBegin(GL_TRIANGLES);
-	
-	for (Triangle_index = 0 ; Triangle_index < Triangle_Number ; Triangle_index++) {
-		p = 3*Triangle_index;
-		for (Point = 0; Point < 3 ; Point++) {
-			p = 3*Triangle_index + Point;
-			v1 = Vertex_Coordinates[3*Vertex_Indices[p]];
-			v2 = Vertex_Coordinates[3*Vertex_Indices[p]+1];
-			v3 = Vertex_Coordinates[3*Vertex_Indices[p]+2];
-			// Normal 
-			N1 = Vertex_Normal[3*Vertex_Indices[p]];
-			N2 = Vertex_Normal[3*Vertex_Indices[p]+1];
-			N3 = Vertex_Normal[3*Vertex_Indices[p]+2];
-			
-			//Z_color = (z_max+v3)/(z_max-z_min);
-			//glColor3f(Z_color, Z_color, Z_color);
-			glNormal3f(N1, N2, N3);
-			glVertex3f(v1, v2, v3);
-			}
-	}
-	glEnd();
-	glPopMatrix();
-	
-	glutSwapBuffers();
-	glFlush();
-	glutPostRedisplay();
 }
 
 void Solar_Display()
@@ -253,7 +202,7 @@ int main (int argc, char *argv[]) {
 	printf("Load model %s\n",models[md_num]);
     Read_Model_From_File(model_name);
 	Normalization();
-	glutDisplayFunc(RenderScene); 
+	glutDisplayFunc(Model_Display); 
 	//glutDisplayFunc(Solar_Display);
 	//glutDisplayFunc(Robot_Display);
 	glutReshapeFunc(ChangeWindowsSize); 
