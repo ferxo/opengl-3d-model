@@ -83,38 +83,52 @@ int Read_Model_From_File(char *Model_Name)
 	}
 	
 	// read the triangle list
-	fscanf(Model,"%s",title);
-	if (strcmp("Triangle_list", title) == 0){
-		fscanf(Model, "%d", &Triangle_Number);
-		Vertex_Indices = malloc(3*Triangle_Number*sizeof(GLint));
-		Vertex_Normal = calloc(Vertex_Number*3, sizeof(GLfloat));
-		
-		for (index = 0; index < Triangle_Number ; index++) {
-			fscanf(Model, "%d",&p1);
-			fscanf(Model, "%d",&p2);
-			fscanf(Model, "%d",&p3);
+	while (fscanf(Model,"%s",title) != EOF){
+		if (strcmp("Triangle_list", title) == 0 || strcmp("Triangle_list_vn", title) == 0){
+			fscanf(Model, "%d", &Triangle_Number);
+			Vertex_Indices = malloc(3*Triangle_Number*sizeof(GLint));
 			
-			Vertex_Indices[3*index]   = p1;
-			Vertex_Indices[3*index+1] = p2;
-			Vertex_Indices[3*index+2] = p3;
+			if (strcmp("Triangle_list_vn", title) != 0) {
+				Vertex_Normal = calloc(Vertex_Number*3, sizeof(GLfloat));
+			}
 			
-			// Each
-			v1 = &Vertex_Coordinates[3*p1];
-			v2 = &Vertex_Coordinates[3*p2];
-			v3 = &Vertex_Coordinates[3*p3];
-			
-			// Normal 
-			N1  = &Vertex_Normal[3*p1];
-			N2  = &Vertex_Normal[3*p2];
-			N3  = &Vertex_Normal[3*p3];
-			
-			// Calculate the normal of each point
-			CalculateNormal(v1, v3, v2, N);
-			VectorAdd(N1, N);
-			VectorAdd(N2, N);
-			VectorAdd(N3, N);
+			for (index = 0; index < Triangle_Number ; index++) {
+				fscanf(Model, "%d",&p1);
+				fscanf(Model, "%d",&p2);
+				fscanf(Model, "%d",&p3);
+				
+				Vertex_Indices[3*index]   = p1;
+				Vertex_Indices[3*index+1] = p2;
+				Vertex_Indices[3*index+2] = p3;
+				
+				// Each
+				v1 = &Vertex_Coordinates[3*p1];
+				v2 = &Vertex_Coordinates[3*p2];
+				v3 = &Vertex_Coordinates[3*p3];
+				
+				if (strcmp("Triangle_list_vn", title) != 0) {
+					// Normal 
+					N1  = &Vertex_Normal[3*p1];
+					N2  = &Vertex_Normal[3*p2];
+					N3  = &Vertex_Normal[3*p3];
+					
+					// Calculate the normal of each point
+					CalculateNormal(v1, v3, v2, N);
+					VectorAdd(N1, N);
+					VectorAdd(N2, N);
+					VectorAdd(N3, N);
+				}
+			}
+		} else if (strcmp("Normals", title) == 0) {
+			fscanf(Model, "%d", &Vertex_Number);
+			Vertex_Normal = calloc(Vertex_Number*3, sizeof(GLfloat));
+			for (index = 0; index < Vertex_Number; index++) {
+				fscanf(Model,"%f%f%f",&x,&y,&z);
+				Vertex_Normal[3*index]   = x;
+				Vertex_Normal[3*index+1] = y;
+				Vertex_Normal[3*index+2] = z;
+			}
 		}
-		
 	}
 	//printf("End of parsing Model file.\n");
 	return 1;
@@ -199,7 +213,6 @@ void CalculateNormal(const GLfloat *Vert1, const GLfloat *Vert2, const GLfloat *
 		N[1] = N[1]/len;
 		N[2] = N[2]/len;
 	}
-		//printf("Normal: %f, %f, %f\n",N[0], N[1], N[2]);
 }
 
 void VectorAdd(GLfloat *V1, GLfloat *V2)
@@ -217,4 +230,51 @@ void VectorAdd(GLfloat *V1, GLfloat *V2)
 		V1[1] = N[1]/len;
 		V1[2] = N[2]/len;
 	}
+}
+
+void Model_Display()
+{
+	int Triangle_index, Point;
+	int p;
+	GLfloat v1, v2, v3;
+	GLfloat N1, N2, N3;
+	
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+	
+	// Enable DEPTH_TEST
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
+	
+	glPushMatrix();
+	glRotatef((GLfloat)Vr_x, 1, 0, 0);
+	glRotatef((GLfloat)Vr_y, 0, 1, 0);
+	//glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+	
+	
+	// Read the Model
+	glBegin(GL_TRIANGLES);
+	
+	for (Triangle_index = 0 ; Triangle_index < Triangle_Number ; Triangle_index++) {
+		p = 3*Triangle_index;
+		for (Point = 0; Point < 3 ; Point++) {
+			p = 3*Triangle_index + Point;
+			v1 = Vertex_Coordinates[3*Vertex_Indices[p]];
+			v2 = Vertex_Coordinates[3*Vertex_Indices[p]+1];
+			v3 = Vertex_Coordinates[3*Vertex_Indices[p]+2];
+			// Normal 
+			N1 = Vertex_Normal[3*Vertex_Indices[p]];
+			N2 = Vertex_Normal[3*Vertex_Indices[p]+1];
+			N3 = Vertex_Normal[3*Vertex_Indices[p]+2];
+			// Draw the Model
+			glNormal3f(N1, N2, N3);
+			glVertex3f(v1, v2, v3);
+		}
+	}
+	glEnd();
+	glPopMatrix();
+	
+	glutSwapBuffers();
+	glFlush();
+	glutPostRedisplay();
 }

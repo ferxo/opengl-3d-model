@@ -62,3 +62,4 @@ void CalculateNormal(const GLfloat *Vert1, const GLfloat *Vert2, const GLfloat *
 void VectorAdd(GLfloat *V1, GLfloat *V2);
 
 void Robot_Display();
+void Model_Display();
